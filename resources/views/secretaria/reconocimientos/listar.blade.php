@@ -38,7 +38,7 @@
                             <td>2019</td>
                             <td>PUCP</td>
                             <td>    
-                                <a href="{{route('editar-convenios')}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Cambiar</a>
+                                <a href="{{route('editar-reconocimitos')}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Cambiar</a>
                                 <a href="" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>Ver</a>
                                 <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Eliminar</a>
                             </td>

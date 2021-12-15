@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 //});
 
 //Rutas de Acceso y logeo
-Route::view('/', 'welcome');
+//Route::view('/', 'welcome');
 
 Route::view('login', 'login/login')->name('login')->middleware('guest'); // acceso solo para usuarios no autentificados
-Route::view('dashboard', 'dashboard')->middleware('auth'); // acceso solo para usuarios autentificados
+Route::view('/', 'dashboard')->middleware('auth'); // acceso solo para usuarios autentificados
 
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout']);
@@ -88,6 +88,7 @@ route::get('gestion-ofertas/listar', function () {
 
 route::view('egresado/gestion-formacion/listar', 'egresado/formacion/listar')->name('listar-formacion');
 route::view('egresado/gestion-formacion/nuevo', 'egresado/formacion/nuevo')->name('agregar-formacion');
+route::view('egresado/gestion-formacion/editar', 'egresado/formacion/editar')->name('editar-formacion');
 
 
 //Rutas para Administrador

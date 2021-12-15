@@ -55,7 +55,7 @@
                                     <div class="row">
                                         <div class="col-lg-10"></div>
                                         <div class="col-2">
-                                            <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
+                                            <a href="{{ route('editar-formacion') }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
                                             <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Eliminar</a>
                                         </div>
                                     </div>
