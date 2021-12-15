@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 //Rutas de Acceso y logeo
-Route::view('/', 'home');
+Route::view('/', 'welcome');
 
 Route::view('login', 'login/login')->name('login')->middleware('guest'); // acceso solo para usuarios no autentificados
 Route::view('dashboard', 'dashboard')->middleware('auth'); // acceso solo para usuarios autentificados
