@@ -1,6 +1,8 @@
 <?php
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Administracion\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -91,13 +93,14 @@ route::view('egresado/gestion-formacion/nuevo', 'egresado/formacion/nuevo')->nam
 route::view('egresado/gestion-formacion/editar', 'egresado/formacion/editar')->name('editar-formacion');
 
 
-//Rutas para Administrador
-route::get('gestion-usuarios/nuevo', function () {
-    return view('usuario/nuevo');
-})->name('agregar-usuario');
 
-route::get('gestion-usuarios/listar', function () {
-    return view('usuario/listar');
-})->name('listar-usuario');
+//Route::get('administrador/gestion-usuarios/nuevo', [UserController::class, 'create'])->name('agregar-usuario');
+Route::resource('administrador/gestion-usuarios', UserController::class)->names([
+    'create' => 'agregar-usuario',
+    'store' => 'guardar-usuario',
+    'index' => 'listar-usuario'
+]);
+
+
 
 

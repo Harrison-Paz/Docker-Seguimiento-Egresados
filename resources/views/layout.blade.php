@@ -177,9 +177,13 @@
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
                                     {{--TODO: imagen de usuario--}}
-                                    <img src="{{asset('assets/images/avatar-1.jpg')}}" class="img-radius" alt="User-Profile-Image">
+                                    @if (auth() -> user() -> foto)
+                                    <img class="img-80 img-radius" src="{{ asset('storage').'/'. auth() -> user() -> foto }}" alt="User-Profile-Image">
+                                    @else
+                                    <img class="img-80 img-radius" src="{{asset('assets/images/avatar-3.jpg')}}" alt="User-Profile-Image">
+                                    @endif
                                     {{--TODO: nombre de usuario--}}
-                                    <span>Usuario</span>
+                                    <span>{{ auth()->user()->nombre }}</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
@@ -216,10 +220,14 @@
                             <div class="">
                                 <div class="main-menu-header">
                                     {{--TODO: imagen de usuario--}}
-                                    <img class="img-80 img-radius" src="{{asset('assets/images/avatar-1.jpg')}}" alt="User-Profile-Image">
+                                    @if (auth() -> user() -> foto)
+                                    <img class="img-80 img-radius" src="{{ asset('storage').'/'. auth() -> user() -> foto }}" alt="User-Profile-Image">
+                                    @else
+                                    <img class="img-80 img-radius" src="{{asset('assets/images/avatar-3.jpg')}}" alt="User-Profile-Image">
+                                    @endif                                
                                     <div class="user-details">
                                         {{-- TODO: nombre du usuario--}}
-                                        <span id="more-details">Usuario<i class="fa fa-caret-down"></i></span>
+                                        <span id="more-details">{{ auth() -> user() -> nombre }}<i class="fa fa-caret-down"></i></span>
                                     </div>
                                 </div>
                                 <div class="main-menu-content">
