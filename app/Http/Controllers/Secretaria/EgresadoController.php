@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Administracion;
+namespace App\Http\Controllers\Secretaria;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
-
+use App\Models\Egresado;
+use App\Models\User;
+//para permisos
+use Spatie\Permission\Models\Role;
 //para imagenes
 use Illuminate\Support\Facades\Storage;
 
-class UserController extends Controller
+class EgresadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $datos['usuarios']=User::paginate(1);
-        return view('usuario/listar', $datos);
+      
+        $datos['egresados']=Egresado::paginate(1);
+        return view('secretaria/egresados/listar', $datos);
     }
 
     /**
@@ -30,8 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $datos['roles'] = Role::all();
-        return view('usuario/nuevo', $datos);
+        return view('secretaria/egresados/nuevo');
     }
 
     /**
@@ -42,39 +43,44 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //$datosUsuario = request()->all(); retorna todos los datos incluido el token
-        //$datosUsuario = request()->except('_token','rol','passwordConf');
         $usuario = new User;
-
         $usuario -> nombre = $request -> nombre;
         $usuario -> apellido = $request -> apellido;
         $usuario -> email = $request -> email;
         $usuario -> password = bcrypt($request -> password);
         $usuario -> foto = $request -> foto;
-
-        //TODO: restriccion para foto
         if($request->hasFile('foto')){
             $usuario['foto']=$request->file('foto')->store('uploads', 'public');
         }
-
-        //User::insert($datosUsuario);
+         //User::insert($datosUsuario);
         $usuario->save();
          
-        //guardar la relacion.  
-        $usuario->roles()->sync($request->rol);
+        //guardar la relacion.
+        $rolEgresado = 3 ;
+        $usuario->roles()->sync($rolEgresado);
 
-        //TODO: return para ir viendo la recepcion de datos
-        // return response()->json($usuario);
-        return redirect()->route('listar-usuario');
+        $egresado = new Egresado;
+        $egresado -> direccion = $request -> direccion;
+        $egresado -> DNI = $request -> DNI;
+        $egresado -> celular = $request -> celular;
+        $egresado -> fechaEgreso = $request -> fechaEgreso;
+        $egresado -> numPromocion = $request -> numPromocion;
+        $egresado -> puesto = $request -> puesto;
+        $egresado -> hasBachiller = $request -> filled('hasBachiller');
+        $egresado -> hasTitulo = $request -> filled('hasTitulo');
+
+        $usuario -> egresado() -> save($egresado);
+        
+        return redirect()->route('egresado.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Egresado  $egresado
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Egresado $egresado)
     {
         //
     }
@@ -82,30 +88,37 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Egresado  $egresado
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $roles = Role::all();
-        $usuario = User::findOrFail($id);
-        return view('usuario/editar', compact('usuario','roles'));
+        $egresado = Egresado::findOrFail($id);
+        return view('secretaria/egresados/editar', compact('egresado'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Egresado  $egresado
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        // $datosUsuario = request()->except(['_token', '_method']);
-        // User::where('id', '=', $id) -> update($datosUsuario);
+        $egresado = Egresado::findOrFail($id);
+        $egresado -> direccion = $request -> direccion;
+        $egresado -> DNI = $request -> DNI;
+        $egresado -> celular = $request -> celular;
+        $egresado -> fechaEgreso = $request -> fechaEgreso;
+        $egresado -> numPromocion = $request -> numPromocion;
+        $egresado -> puesto = $request -> puesto;
+        $egresado -> hasBachiller = $request -> filled('hasBachiller');
+        $egresado -> hasTitulo = $request -> filled('hasTitulo');
+        $egresado -> update();
 
-        $usuario = User::findOrFail($id);
 
+        $usuario = User::findOrFail($egresado->user_id);
         $usuario -> nombre = $request -> nombre;
         $usuario -> apellido = $request -> apellido;
         $usuario -> email = $request -> email;
@@ -114,38 +127,33 @@ class UserController extends Controller
         }else{
             $usuario -> password = $request -> password;
         }
-        
 
         //TODO: restriccion para foto
         if($request->hasFile('foto')){
-
             //borrar foto
             Storage::delete('public/'.$usuario -> foto);
             $usuario['foto']=$request->file('foto')->store('uploads', 'public');
-        }
-        
-
+        }       
         $usuario->update();
-         
-        //FIXME:actualizar la relacion.  
-        $usuario->roles()->updateExistingPivot($usuario -> id, ['role_id' => $request -> rol]);
 
-        return redirect()->route('listar-usuario');
+        return redirect()->route('egresado.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Egresado  $egresado
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
-        $usuario = User::findOrFail($id);
+    {
+        $egresado = Egresado::findOrFail($id);
+        $usuario = User::findOrFail($egresado->user_id);
         if (Storage::delete('public/'.$usuario -> foto)) {
-            User::destroy($id);            
+            user::destroy($egresado->user_id);            
+            Egresado::destroy($id);            
         }
 
-        return redirect()->route('listar-usuario');
+        return redirect()->route('egresado.index');
     }
 }

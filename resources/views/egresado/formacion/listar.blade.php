@@ -6,62 +6,51 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-header-text">Formación académica</h5>
-                    <a href="{{ route('agregar-formacion') }}" class="btn btn-success btn-sm"><i class="fas fa-plus-square"></i>Agregar</a>
+                    <a href="{{ route('formacion.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus-square"></i>Agregar</a>
                 </div>
                 <div class="card-block accordion-block color-accordion-block">
                     <div class="color-accordion" id="color-accordion">
-                        <a class="accordion-msg b-none waves-effect waves-light">"Oracle SBC Certificación de Resolución de Problemas, Pearson Vue Testing Center, 2015, Hong Kong"</a>
-                        <div class="accordion-desc">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                                Lorem Ipsum passages, and more .
-                            </p>
-                            <br>
-                            <div class="row">
-                                <div class="col-lg-10"></div>
-                                <div class="col-2">
-                                    <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                                    <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Eliminar</a>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="accordion-msg bg-dark-primary b-none waves-effect waves-light">"Cursos de posgrado en Matemáticas Aplicadas, Universidad de Maryland, USA, 2018-2019"
-                            </a>
+                        @foreach ($formaciones as $formacion)
+                            <a class="accordion-msg b-none waves-effect waves-light"><i class="far fa-file-alt text-c-gray f-24"></i> | {{ $formacion -> nombre }}</a>
                             <div class="accordion-desc">
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                                    survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                                    Lorem Ipsum passages, and more .
-                                </p>
+                                <div class="row">
+                                    <div class="col-sm-12 col-xl-7">
+                                        <h4 class="sub-title">DESCRIPCION DE FORMACION</h4>
+                                        <dl class="dl-horizontal row">
+                                            <dt class="col-sm-4">Otorgado por:</dt>
+                                            <dd class="col-sm-8">{{ $formacion -> empresa }}</dd>
+                                            <dt class="col-sm-4">Realizado en:</dt>
+                                            <dd class="col-sm-8">{{ $formacion -> direccion }}</dd>                                            
+                                            <dt class="col-sm-4">En representación por:</dt>
+                                            <dd class="col-sm-8">{{ $formacion -> representante }}</dd>
+                                            <dt class="col-sm-4">Horas académicas:</dt>
+                                            <dd class="col-sm-8">{{ $formacion -> totalHoras }}</dd>
+                                            {{-- <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+                                            <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa
+                                                justo sit amet risus.</dd> --}}
+                                        </dl>
+                                    </div>   
+                                    <div class="col-xl-5">
+                                        <img src="{{ asset('storage').'/'.$formacion->imagen }}" alt="" width="400" >
+                                    </div>
+                                </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col-lg-10"></div>
-                                    <div class="col-2">
-                                        <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                                        <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Eliminar</a>
+                                    <div class="col-lg-9"></div>
+                                    <div class="col-3">
+                                        <a href="{{ route('formacion.edit', $formacion -> id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
+                                        <form action="{{ route('formacion.destroy', $formacion -> id) }}" method="POST" style="float: left">
+                                            @csrf
+                                            {{-- TODO: pasamos datos por metodo Post, pero necesitamos 'delete' para el controlador, asi que lo convertimos ...
+                                            --}}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Quieres borrar?')" value="Borrar"><i
+                                                    class="fas fa-trash"> Borar</i></button> </i>
+                                        </form>
                                     </div>
-                                </div>
-                            </div>
-                            <a class="accordion-msg bg-darkest-primary b-none waves-effect waves-light">"Implementación SBC por Oracle, Toronto, (a completarse en Enero de 2021)"
-                                </a>
-                                <div class="accordion-desc">
-                                    <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                                        survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                                        Lorem Ipsum passages, and more .
-                                    </p>
-                                    <br>                                    
-                                    <div class="row">
-                                        <div class="col-lg-10"></div>
-                                        <div class="col-2">
-                                            <a href="{{ route('editar-formacion') }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                                            <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Eliminar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                </div>                            
+                            </div>                                       
+                        @endforeach
                     </div>
                 </div>
                 <!-- Color Open Accordion ends -->

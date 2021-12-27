@@ -34,8 +34,7 @@
     <!-- scrollbar.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/jquery.mCustomScrollbar.css')}}">
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
-    <script src="https://cdn.tiny.cloud/1/0jx5fxc4wl98ultyqmnounx0uw5rye5vomjse0m6we95s36s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">    
 </head>
 
 <body>
@@ -270,27 +269,20 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{ route('agregar-egresados') }}" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Nuevo</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{ route('editar-egresados') }}" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Gestionar</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
                                         <li class="">
-                                            <a href="{{ route('listar-egresados') }}" class="waves-effect waves-dark">
+                                            <a href="{{ route('egresado.index') }}" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext">Listar</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
+                                        <li class=" ">
+                                            <a href="{{ route('egresado.create') }}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Nuevo</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>                                        
                                     </ul>
                                 </li>
                                 <li class="pcoded-hasmenu">
@@ -406,14 +398,14 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class="">
-                                            <a href="{{ route('listar-formacion') }}" class="waves-effect waves-dark">
+                                            <a href="{{ route('formacion.index') }}" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext">Visalizar informacion</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                         <li class="">
-                                            <a href="{{ route('agregar-formacion')}}" class="waves-effect waves-dark">
+                                            <a href="{{ route('formacion.create')}}" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext">Agregar información</span>
                                                 <span class="pcoded-mcaret"></span>
@@ -495,26 +487,19 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class="">
-                                            <a href="{{ route('agregar-usuario')}}" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Nuevo</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="auth-sign-up.html" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Gestionar</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class="">
                                             <a href="{{ route('listar-usuario')}}" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-layout-sidebar-left"></i><b>S</b></span>
                                                 <span class="pcoded-mtext">Listar</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
+                                        <li class="">
+                                            <a href="{{ route('agregar-usuario')}}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Nuevo</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>                                
                                     </ul>
                                 </li>
                             </ul>

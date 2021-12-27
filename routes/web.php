@@ -2,7 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Administracion\UserController;
-
+use App\Http\Controllers\Secretaria\EgresadoController;
+use App\Http\Controllers\AcademicaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,18 +30,8 @@ Route::post('logout', [LoginController::class, 'logout']);
 
 //Rutas de dashboard
 
-//Rutas para secretaria
-route::get('secretaria/gestion-egresados/nuevo', function () {
-    return view('secretaria/nuevo');
-})->name('agregar-egresados');
-
-route::get('secretaria/gestion-egresados/listar', function () {
-    return view('secretaria/listar');
-})->name('listar-egresados');
-
-route::get('secretaria/gestion-egresados/editar', function () {
-    return view('secretaria/editar');
-})->name('editar-egresados');
+//Rutas gestion egresados
+Route::resource('secretaria/gestion-egresados', EgresadoController::class)->names('egresado');
 
 //rutas investigacion
 route::get('secretaria/gestion-investigacion/nuevo', function () {
@@ -83,22 +74,23 @@ route::get('secretaria/gestion-reconocimientos/editar', function () {
 
 
 
-//Rutas para Egresado
+//Rutas gestion ofertas
 route::get('gestion-ofertas/listar', function () {
     return view('egresado/listar');
 })->name('listar-oferta');
 
-route::view('egresado/gestion-formacion/listar', 'egresado/formacion/listar')->name('listar-formacion');
-route::view('egresado/gestion-formacion/nuevo', 'egresado/formacion/nuevo')->name('agregar-formacion');
-route::view('egresado/gestion-formacion/editar', 'egresado/formacion/editar')->name('editar-formacion');
-
+//Rutas gestion formacion academica
+Route::resource('egresados/gestion-formacion', AcademicaController::class)->names('formacion');
 
 
 //Route::get('administrador/gestion-usuarios/nuevo', [UserController::class, 'create'])->name('agregar-usuario');
 Route::resource('administrador/gestion-usuarios', UserController::class)->names([
     'create' => 'agregar-usuario',
     'store' => 'guardar-usuario',
-    'index' => 'listar-usuario'
+    'index' => 'listar-usuario',
+    'destroy' => 'eliminar-usuario',
+    'edit' => 'editar-usuario',
+    'update' => 'actualizar-usuario'
 ]);
 
 
