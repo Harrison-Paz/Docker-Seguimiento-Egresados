@@ -18,6 +18,7 @@ class Egresado extends Model
         return $this->belongsTo(User::class);
     }
 
+
     /**
      * Get all of the academicas for the Egresado
      *
@@ -26,5 +27,38 @@ class Egresado extends Model
     public function academicas()
     {
         return $this->hasMany(Academica::class);
+    }
+
+
+    /**
+     * Get all of the reconocimientos for the Egresado
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function reconocimientos()
+    {
+        return $this->hasMany(Reconocimiento::class);
+    }
+
+
+    /**
+     * Get all of the investigas for the Egresado
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function investigas()
+    {
+        return $this->hasMany(Investiga::class);
+    }
+
+
+    /**
+     * The egresadosOfertas that belong to the Egresado
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function egresadosOfertas()
+    {
+        return $this->belongsToMany(Oferta::class);
     }
 }

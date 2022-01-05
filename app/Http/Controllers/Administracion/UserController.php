@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $datos['usuarios']=User::paginate(1);
+        $datos['usuarios']=User::paginate(5);
         return view('usuario/listar', $datos);
     }
 
@@ -121,6 +121,7 @@ class UserController extends Controller
 
             //borrar foto
             Storage::delete('public/'.$usuario -> foto);
+            //crear nueva referencia
             $usuario['foto']=$request->file('foto')->store('uploads', 'public');
         }
         

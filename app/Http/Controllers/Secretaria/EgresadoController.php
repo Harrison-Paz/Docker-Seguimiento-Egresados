@@ -21,7 +21,7 @@ class EgresadoController extends Controller
     public function index()
     {
       
-        $datos['egresados']=Egresado::paginate(1);
+        $datos['egresados']=Egresado::paginate(5);
         return view('secretaria/egresados/listar', $datos);
     }
 

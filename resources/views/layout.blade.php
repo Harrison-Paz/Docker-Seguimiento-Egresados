@@ -284,30 +284,7 @@
                                             </a>
                                         </li>                                        
                                     </ul>
-                                </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-layout-sidebar-left"></i><b>BC</b></span>
-                                        <span class="pcoded-mtext">Gestión de convenios</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{ route('agregar-convenios') }}" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Nuevo</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="{{ route('listar-convenios') }}" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Listar</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                </li>                              
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>BC</b></span>
@@ -315,20 +292,20 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{ route('agregar-investigacion') }}" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Nuevo</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
                                         <li class="">
-                                            <a href="{{ route('listar-investigacion') }}" class="waves-effect waves-dark">
+                                            <a href="{{ route('investigacion.index') }}" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext">Listar</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
+                                        <li class=" ">
+                                            <a href="{{ route('investigacion.create') }}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Nuevo</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>                                        
                                     </ul>
                                 </li>
                                 <li class="pcoded-hasmenu">
@@ -338,23 +315,69 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{{ route('reconocimiento.index') }}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Listar</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
                                         <li class=" ">
-                                            <a href="{{ route('agregar-reconocimientos') }}" class="waves-effect waves-dark">
+                                            <a href="{{ route('reconocimiento.create') }}" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext">Nuevo</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
-                                        </li>
+                                        </li>                                       
+                                    </ul>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-layout-sidebar-left"></i><b>BC</b></span>
+                                        <span class="pcoded-mtext">Gestión de convenios</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
                                         <li class="">
-                                            <a href="{{ route('listar-reconocimientos') }}" class="waves-effect waves-dark">
+                                            <a href="{{ route('empresa.index') }}" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext">Listar</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{ route('empresa.create') }}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Nuevo</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-layout-sidebar-left"></i><b>BC</b></span>
+                                        <span class="pcoded-mtext">Gestión de ofertas</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{{ route('oferta.index') }}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Listar</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{ route('oferta.create') }}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Nuevo</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {{-- <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><i class="ti-layout-sidebar-left"></i><b>BC</b></span>
                                         <span class="pcoded-mtext">Ofertas laborales</span>
@@ -376,7 +399,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li class="">
                                     <a href="form-elements-component.html" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>

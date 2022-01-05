@@ -4,6 +4,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Administracion\UserController;
 use App\Http\Controllers\Secretaria\EgresadoController;
 use App\Http\Controllers\AcademicaController;
+use App\Http\Controllers\ReconocimientoController;
+use App\Http\Controllers\InvestigaController;
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\OfertaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +24,6 @@ use App\Http\Controllers\AcademicaController;
 //});
 
 //Rutas de Acceso y logeo
-//Route::view('/', 'welcome');
 
 Route::view('login', 'login/login')->name('login')->middleware('guest'); // acceso solo para usuarios no autentificados
 Route::view('/', 'dashboard')->middleware('auth'); // acceso solo para usuarios autentificados
@@ -29,22 +32,17 @@ Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout']);
 
 //Rutas de dashboard
-
 //Rutas gestion egresados
 Route::resource('secretaria/gestion-egresados', EgresadoController::class)->names('egresado');
 
 //rutas investigacion
-route::get('secretaria/gestion-investigacion/nuevo', function () {
-    return view('secretaria/investigaciones/nuevo');
-})->name('agregar-investigacion');
+Route::resource('secretaria/gestion-investigacion', InvestigaController::class)->names('investigacion');
 
-route::get('secretaria/gestion-investigacion/listar', function () {
-    return view('secretaria/investigaciones/listar');
-})->name('listar-investigacion');
+//rutas Empresas
+Route::resource('secretaria/gestion-empresa', EmpresaController::class)->names('empresa');
 
-route::get('secretaria/gestion-investigacion/editar', function () {
-    return view('secretaria/investigaciones/editar');
-})->name('editar-investigacion');
+//Ofertas
+Route::resource('secretaria/gestion-ofertas', OfertaController::class)->names('oferta');
 
 //rutas convenios
 route::get('secretaria/gestion-convenios/nuevo', function () {
@@ -60,17 +58,7 @@ route::get('secretaria/gestion-convenios/editar', function () {
 })->name('editar-convenios');
 
 //rutas reconocimientos
-route::get('secretaria/gestion-reconocimientos/nuevo', function () {
-    return view('secretaria/reconocimientos/nuevo');
-})->name('agregar-reconocimientos');
-
-route::get('secretaria/gestion-reconocimientos/listar', function () {
-    return view('secretaria/reconocimientos/listar');
-})->name('listar-reconocimientos');
-
-route::get('secretaria/gestion-reconocimientos/editar', function () {
-    return view('secretaria/reconocimientos/editar');
-})->name('editar-reconocimientos');
+Route::resource('secretaria/gestion-reconocimientos', ReconocimientoController::class)->names('reconocimiento');
 
 
 

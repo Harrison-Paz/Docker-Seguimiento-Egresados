@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <h5>Formulario de formación académica</h5>
-                <span>Agregar Nueva formación</span>
+                <span>Editar formación</span>
             </div>
             <div class="card-block">
                 <form action="{{ route('formacion.update', $formacion->id) }}" method="POST" enctype="multipart/form-data">                                              
