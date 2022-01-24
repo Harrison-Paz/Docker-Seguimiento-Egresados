@@ -26,11 +26,12 @@
                         <th>Id</th>
                         <th>Oferta</th>
                         <th>Tipo</th>
-                        <th>Vacantes</th>
                         <th>Empresa</th>
+                        <th>Vacantes</th>
                         <th>Ubicación</th>
                         <th>Fecha</th>
                         <th>Descripción</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,11 +40,11 @@
                         <th scope="row">{{ $oferta->id }}</th>
                         <td>{{ $oferta->oferta }}</td>
                         <td>{{ $oferta->tipo }}</td>
-                        <td>{{ $oferta->vacantes}}</td>
                         <td>{{ $oferta->empresa->razonSocial }}</td>
-                        <td>{{ $oferta->ubicación }}</td>
+                        <td>{{ $oferta->vacantes}}</td>
+                        <td>{{ $oferta->ubicacion }}</td>
                         <td>{{ $oferta->fechaEmicion }}</td>
-                        <td>{{ $oferta->Detalle }}</td>
+                        <td>{{ $oferta->detalle }}</td>
                         <td>
                             <a href="{{ route('oferta.edit', $oferta -> id) }}"
                                 class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
@@ -63,6 +64,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {!! $ofertas -> links() !!}
         </div>
     </div>
 </div>

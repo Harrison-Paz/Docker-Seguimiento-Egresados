@@ -16,7 +16,7 @@ class InvestigaController extends Controller
      */
     public function index()
     {
-        $investigaciones = Investiga::all();
+        $investigaciones = Investiga::paginate(5);
         return view('secretaria/investigaciones/listar', compact('investigaciones'));
     }
 

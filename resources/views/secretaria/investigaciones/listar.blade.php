@@ -58,6 +58,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {!! $investigaciones -> links() !!}
             </div>
         </div>
     </div>

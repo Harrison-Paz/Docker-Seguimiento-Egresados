@@ -22,8 +22,8 @@ class CreateOfertasTable extends Migration
             $table->string('fechaEmicion');
             $table->string('vacantes');
             $table->string('detalle');
-            $table->unsignedBigInteger('id_empresa');
-            $table->foreign('id_empresa')->references('id')->on('empresas')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('empresa_id');
+            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
