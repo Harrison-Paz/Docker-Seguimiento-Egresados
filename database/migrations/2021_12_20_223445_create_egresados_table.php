@@ -17,7 +17,7 @@ class CreateEgresadosTable extends Migration
             $table->id();
 
             $table -> string('carrera', 25)->default('INGENIERIA DE SISTEMAS');
-            $table -> string('direccion', 25);
+            $table -> string('direccion', 100);
             $table -> string('celular', 11)->nullable();
             $table -> string('DNI', 8);
             $table -> date('fechaEgreso');

@@ -41,5 +41,9 @@ class UserSeeder extends Seeder
             'email' => 'dev@mail.com',
             'password' => bcrypt('123456789')
         ])->assignRole('developer');
+
+        for ($i=0; $i <20 ; $i++) { 
+            User::factory()->create(['password'=> bcrypt('123456789')])->assignRole('Egresado');
+        }
     }
 }

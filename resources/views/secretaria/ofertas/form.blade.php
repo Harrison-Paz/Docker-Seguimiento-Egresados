@@ -22,7 +22,7 @@
         <select class="form-control form-control-round" name="empresa_id" id="empresa_id">
             <option value="">...</option>
             @foreach ($empresas as $empresa)
-            <option value="{{ $empresa->id }}" @isset($investigacion->egresado_id)
+            <option value="{{ $empresa->id }}" @isset($oferta->empresa_id)
                 @if ($oferta->empresa_id == $empresa->id)
                 selected="selected";
                 @endif
@@ -52,9 +52,9 @@
 <div class="form-group row">
     <label class="col-sm-2 col-form-label" for="detalle">Detalle</label>
     <div class="col-sm-8">
-        <input type="number" class="form-control form-control-round"
+        <textarea type="textarea" rows="3" class="form-control form-control-round"
             placeholder="Agregar ubicación donde se desarrolla la oferta" id="detalle" name="detalle"
-            value="{{ isset($oferta->detalle)? $oferta->detalle : '' }}">
+            value="{{ isset($oferta->detalle)? $oferta->detalle : '' }}">{{ isset($oferta->detalle)? $oferta->detalle : '' }} </textarea>
     </div>
 </div>
 

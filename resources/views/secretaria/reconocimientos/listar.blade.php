@@ -56,6 +56,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {!! $reconocimientos -> links() !!}
             </div>
         </div>
     </div>

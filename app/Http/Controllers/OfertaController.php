@@ -15,7 +15,7 @@ class OfertaController extends Controller
      */
     public function index()
     {
-        $ofertas = Oferta::paginate(5);
+        $ofertas = Oferta::paginate(3);
         return view('secretaria/ofertas/listar', compact('ofertas'));
     }
 
@@ -62,8 +62,9 @@ class OfertaController extends Controller
      */
     public function edit($id)
     {
+        $empresas = Empresa::all();
         $oferta = Oferta::findOrFail($id);
-        return view('secretaria/ofertas/editar', compact('oferta'));
+        return view('secretaria/ofertas/editar', compact('oferta','empresas'));
     }
 
     /**
