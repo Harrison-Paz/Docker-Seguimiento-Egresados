@@ -68,6 +68,8 @@ class EgresadoController extends Controller
         $egresado -> puesto = $request -> puesto;
         $egresado -> hasBachiller = $request -> filled('hasBachiller');
         $egresado -> hasTitulo = $request -> filled('hasTitulo');
+        $egresado -> hasMaestria = $request -> filled('hasMaestria');
+        $egresado -> hasDoctorado = $request -> filled('hasDoctorado');
 
         $usuario -> egresado() -> save($egresado);
         
@@ -115,6 +117,8 @@ class EgresadoController extends Controller
         $egresado -> puesto = $request -> puesto;
         $egresado -> hasBachiller = $request -> filled('hasBachiller');
         $egresado -> hasTitulo = $request -> filled('hasTitulo');
+        $egresado -> hasMaestria = $request -> filled('hasMaestria');
+        $egresado -> hasDoctorado = $request -> filled('hasDoctorado');
         $egresado -> update();
 
 
@@ -155,5 +159,15 @@ class EgresadoController extends Controller
         }
 
         return redirect()->route('egresado.index');
+    }
+
+    public function grafico()
+    {
+        $bachiller = Egresado::where('hasBachiller','==', '1')->count();
+        $titulo = Egresado::where('hasTitulo','==', '1')->count();
+        $maestria = Egresado::where('hasMaestria','==', 1)->count();
+        $doctorado = Egresado::where('hasDoctorado','==', 'true')->count();
+
+        return view('secretaria/egresados/grafico', $bachiller);
     }
 }

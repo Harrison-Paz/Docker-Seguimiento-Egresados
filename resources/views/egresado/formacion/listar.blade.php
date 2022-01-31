@@ -6,7 +6,15 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-header-text">Formación académica</h5>
-                    <a href="{{ route('formacion.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus-square"></i>Agregar</a>
+                    <div class="float-right mr-5">
+                        <a href="{{ route('formacion.ver_pdf') }}" class="btn btn-primary btn-sm" target="_blank">
+                            {{ __('ver PDF') }}
+                        </a>
+                        <a href="{{ route('formacion.des_pdf') }}" class="btn btn-info btn-sm" target="_blank">
+                            {{ __('descargar PDF') }}
+                        </a>
+                        <a href="{{ route('formacion.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus-square"></i>Agregar</a>                        
+                    </div>
                 </div>
                 <div class="card-block accordion-block color-accordion-block">
                     <div class="color-accordion" id="color-accordion">

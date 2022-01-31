@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class AcademicaController extends Controller
 {
@@ -20,6 +21,22 @@ class AcademicaController extends Controller
     public function index()
     {   $formaciones = Academica::all(); 
         return view('egresado/formacion/listar', compact('formaciones'));
+    }
+
+    public function ver_pdf()
+    {   
+        $formaciones = Academica::all(); 
+
+        $pdf = PDF::loadView('egresado/formacion/pdf', ['formaciones' => $formaciones]);
+        return $pdf->stream();
+    }
+
+    public function descargar_pdf()
+    {   
+        $formaciones = Academica::all(); 
+
+        $pdf = PDF::loadView('egresado/formacion/pdf', ['formaciones' => $formaciones]);
+        return $pdf->download('__formacion.pdf');
     }
 
     /**

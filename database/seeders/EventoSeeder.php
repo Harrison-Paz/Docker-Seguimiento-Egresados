@@ -1,11 +1,10 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\Investiga;
+use App\Models\Evento;
 use Illuminate\Database\Seeder;
 
-class InvestigaSeeder extends Seeder
+class EventoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +13,6 @@ class InvestigaSeeder extends Seeder
      */
     public function run()
     {
-        Investiga::factory(50)->create();
+        Evento::factory(15)->create();
     }
 }

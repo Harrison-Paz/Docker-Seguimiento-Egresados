@@ -25,6 +25,8 @@ class CreateEgresadosTable extends Migration
             $table -> smallInteger('puesto');
             $table -> boolean('hasBachiller');
             $table -> boolean('hasTitulo');
+            $table -> boolean('hasMaestria');
+            $table -> boolean('hasDoctorado');
 
             $table -> unsignedBigInteger('user_id')->nullable();
             $table ->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');

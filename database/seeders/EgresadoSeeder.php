@@ -14,6 +14,6 @@ class EgresadoSeeder extends Seeder
      */
     public function run()
     {
-        Egresado::factory(20)->create();
+        Egresado::factory(50)->create();
     }
 }

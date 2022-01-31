@@ -5,7 +5,9 @@
      <div class="card">
         <div class="card-header">
             <h5>Lista de Egresados</h5>
-            <a href="{{ route('egresado.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus-square"></i>Agregar</a>
+            <div class="float-right mr-5">                
+                <a href="{{ route('egresado.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus-square"></i>Agregar</a>
+            </div>
             <span>Egresados registrados</span>
             <div class="card-header-right">
                 <ul class="list-unstyled card-option">
@@ -28,7 +30,7 @@
                             <th>Fotografia</th>
                             <th># Promoción</th>
                             <th>Año de egreso</th>
-                            <th>Accion</th>
+                            <th colspan="2">Accion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,15 +46,15 @@
                             <td>{{ $egresado -> fechaEgreso}}</td>
                             <td>
                                 <a href="{{ route('egresado.edit', $egresado -> id) }}" class="btn btn-info btn-sm"><i
-                                        class="fas fa-edit"></i>Editar</a>
-                                <form action="{{ route('egresado.destroy', $egresado -> id) }}" method="POST">
+                                        class="fas fa-edit"></i>Editar</a>  
+                                <form action="{{ route('egresado.destroy', $egresado -> id) }}" method="POST" style="float: left">
                                     @csrf
                                     {{-- TODO: pasamos datos por metodo Post, pero necesitamos 'delete' para el controlador, asi que lo convertimos
                                     ... --}}
                                     {{ method_field('DELETE') }}
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Quieres borrar?')"
-                                        value="Borrar"><i class="fas fa-trash"> Borar</i></button> </i>
-                                </form>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Quieres borrar?')" value="Borrar"><i
+                                            class="fas fa-trash"> Borar</i></button> </i>
+                                </form>                           
                             </td>
                         </tr>                                                                          
                         @endforeach

@@ -9,15 +9,10 @@ use DB;
 
 class InvestigaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $investigaciones = Investiga::paginate(5);
-        return view('secretaria/investigaciones/listar', compact('investigaciones'));
+        return view('secretaria/investigaciones/grafico', compact('investigaciones'));
     }
 
     /**
@@ -124,4 +119,5 @@ class InvestigaController extends Controller
         Investiga::destroy($id);
         return redirect()->route('investigacion.index');
     }
+    
 }

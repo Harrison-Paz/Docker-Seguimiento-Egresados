@@ -29,4 +29,14 @@ class Oferta extends Model
     {
         return $this->belongsToMany(Egresado::class);
     }
+
+    /**
+     * The egresados that belong to the Oferta
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function egresados()
+    {
+        return $this->belongsToMany(Egresado::class, 'egresado_ofertas');
+    }
 }

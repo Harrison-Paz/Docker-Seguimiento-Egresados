@@ -22,7 +22,9 @@ class EgresadoFactory extends Factory
             'puesto' =>$this->faker->numberBetween(1,60),
             'hasBachiller' =>$this->faker->numberBetween(0,1),
             'hasTitulo' =>$this->faker->numberBetween(0,1),
-            'user_id' =>$this->faker->unique()->numberBetween(5,24),
+            'hasMaestria' =>$this->faker->numberBetween(0,1),
+            'hasDoctorado' =>$this->faker->numberBetween(0,1),
+            'user_id' =>$this->faker->unique()->numberBetween(5,54),
         ];
     }
 }

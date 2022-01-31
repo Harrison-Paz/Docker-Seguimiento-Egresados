@@ -17,7 +17,7 @@ class InvestigaFactory extends Factory
         $egresados = Egresado::pluck('id')->all();
         return [
             'tema' => $this->faker->catchPhrase(),
-            'Area' => $this->faker->company(),
+            'area' => $this->faker->company(),
             'fecha' => $this->faker->dateTimeBetween('-10years', 'now'),
             'egresado_id' => $this->faker->randomElement($egresados),
         ];

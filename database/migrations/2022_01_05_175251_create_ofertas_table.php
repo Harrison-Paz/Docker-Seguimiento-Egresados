@@ -28,7 +28,7 @@ class CreateOfertasTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('egresado_oferta', function (Blueprint $table) {
+        Schema::create('egresado_ofertas', function (Blueprint $table) {
             $table->bigIncrements('id');
             
             $table->unsignedBigInteger('oferta_id')->nullable();
@@ -39,6 +39,7 @@ class CreateOfertasTable extends Migration
 
             $table->timestamps();
         });
+
     }
 
     /**
@@ -48,7 +49,7 @@ class CreateOfertasTable extends Migration
      */
     public function down()
     {
-        schema::dropIfExists('egresado_oferta');
+        schema::dropIfExists('egresado_ofertas');
         Schema::dropIfExists('ofertas');
     }
 }
