@@ -9,15 +9,41 @@ use DB;
 
 class InvestigaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
+    public function grafico(){
+        $fecha12 = Investiga::where('fecha', '>=', '2012-01-01')->where('fecha', '<', '2013-01-01')->count();
+        $fecha13 = Investiga::where('fecha', '>=', '2013-01-01')->where('fecha', '<', '2014-01-01')->count();
+        $fecha14 = Investiga::where('fecha', '>=', '2014-01-01')->where('fecha', '<', '2015-01-01')->count();
+        $fecha15 = Investiga::where('fecha', '>=', '2015-01-01')->where('fecha', '<', '2016-01-01')->count();
+        $fecha16 = Investiga::where('fecha', '>=', '2016-01-01')->where('fecha', '<', '2017-01-01')->count();
+        $fecha17 = Investiga::where('fecha', '>=', '2017-01-01')->where('fecha', '<', '2018-01-01')->count();
+        $fecha18 = Investiga::where('fecha', '>=', '2018-01-01')->where('fecha', '<', '2019-01-01')->count();
+        $fecha19 = Investiga::where('fecha', '>=', '2019-01-01')->where('fecha', '<', '2020-01-01')->count();
+        $fecha20 = Investiga::where('fecha', '>=', '2020-01-01')->where('fecha', '<', '2021-01-01')->count();
+        $fecha21 = Investiga::where('fecha', '>=', '2021-01-01')->where('fecha', '<', '2022-01-01')->count();
+        $fecha22 = Investiga::where('fecha', '>=', '2022-01-01')->where('fecha', '<', '2023-01-01')->count();
+
+        $data[0] = $fecha12;
+        $data[1] = $fecha13;
+        $data[2] = $fecha14;
+        $data[3] = $fecha15;
+        $data[4] = $fecha16;
+        $data[5] = $fecha17;
+        $data[6] = $fecha18;
+        $data[7] = $fecha19;
+        $data[8] = $fecha20;
+        $data[9] = $fecha21;
+        $data[10] = $fecha22;
+        $data['data'] = json_encode($data);
+
+        $inv = Investiga::count();
+        return view('welcome', $data, compact('inv'));        
+    }
+
     public function index()
     {
         $investigaciones = Investiga::paginate(5);
-        return view('secretaria/investigaciones/listar', compact('investigaciones'));
+        return view('secretaria/investigaciones/grafico', compact('investigaciones'));
     }
 
     /**
@@ -124,4 +150,5 @@ class InvestigaController extends Controller
         Investiga::destroy($id);
         return redirect()->route('investigacion.index');
     }
+    
 }

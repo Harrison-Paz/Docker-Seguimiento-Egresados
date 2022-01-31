@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123456789')
         ])->assignRole('developer');
 
-        for ($i=0; $i <20 ; $i++) { 
+        for ($i=0; $i <50 ; $i++) { 
             User::factory()->create(['password'=> bcrypt('123456789')])->assignRole('Egresado');
         }
     }

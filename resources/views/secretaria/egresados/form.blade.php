@@ -98,6 +98,26 @@
     >
     <label class="form-check-label" for="flexSwitchCheckDefault">Titulado</label>
 </div>
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" name="hasMaestria" id="flexSwitchCheckDefault" 
+    @isset($egresado -> hasMaestria)
+        @if ($egresado -> hasMaestria == true)
+            checked
+        @endif  
+    @endisset
+    >
+    <label class="form-check-label" for="flexSwitchCheckDefault">Maestria</label>
+</div>
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" name="hasDoctorado" id="flexSwitchCheckDefault" 
+    @isset($egresado -> hasDoctorado)
+        @if ($egresado -> hasDoctorado == true)
+            checked
+        @endif  
+    @endisset
+    >
+    <label class="form-check-label" for="flexSwitchCheckDefault">Doctorado</label>
+</div>
 <br>
 <br>
 

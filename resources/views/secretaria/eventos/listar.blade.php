@@ -4,9 +4,9 @@
 <!-- Hover table card start -->
 <div class="card">
     <div class="card-header">
-        <h5>Lista de ofertas</h5>
+        <h5>Lista de capacitación</h5>
         @can('listar-egresados')
-        <a href="{{ route('oferta.create') }}" class="btn btn-success btn-sm"><i
+        <a href="{{ route('evento.create') }}" class="btn btn-success btn-sm"><i
             class="fas fa-plus-square"></i>Agregar</a>            
         @endcan
         <span>Ofertas registradas</span>
@@ -26,32 +26,30 @@
                 <thead>
                     <tr class="table-info">
                         <th>Id</th>
-                        <th>Oferta</th>
-                        <th>Tipo</th>
-                        <th>Empresa</th>
-                        <th>Vacantes</th>
-                        <th>Ubicación</th>
+                        <th>Evento</th>
+                        <th>Organizacion</th>
+                        <th>Inscripciones</th>
                         <th>Fecha</th>
-                        <th>Descripción</th>
+                        <th>Horas academicas</th>
+                        <th>Dirección</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($ofertas as $oferta)
+                    @foreach ($eventos as $evento)
                     <tr>
-                        <th scope="row">{{ $oferta->id }}</th>
-                        <td>{{ $oferta->oferta }}</td>
-                        <td>{{ $oferta->tipo }}</td>
-                        <td>{{ $oferta->empresa->razonSocial }}</td>
-                        <td>{{ $oferta->vacantes}}</td>
-                        <td>{{ $oferta->ubicacion }}</td>
-                        <td>{{ $oferta->fechaEmicion }}</td>
-                        <td>{{ $oferta->detalle }}</td>
+                        <th scope="row">{{ $evento->id }}</th>
+                        <td>{{ $evento->titulo }}</td>
+                        <td>{{ $evento->organizacion }}</td>
+                        <td>{{ $evento->fechaInscripcion }}</td>
+                        <td>{{ $evento->fechaEvento }}</td>
+                        <td>{{ $evento->horasAcademicas }}</td>
+                        <td>{{ $evento->direccion }}</td>
                         @can('listar-egresados')
                         <td>
-                            <a href="{{ route('oferta.edit', $oferta -> id) }}"
+                            <a href="{{ route('evento.edit', $evento -> id) }}"
                                 class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                            <form action="{{ route('oferta.destroy', $oferta -> id) }}" method="POST"
+                            <form action="{{ route('evento.destroy', $evento -> id) }}" method="POST"
                                 style="float: left;">
                                 @csrf
                                 {{-- TODO: pasamos datos por metodo Post, pero necesitamos 'delete' para el controlador,
@@ -62,18 +60,14 @@
                                     onclick="return confirm('Quieres borrar?')" value="Borrar"><i class="fas fa-trash">
                                         Borar</i></button> </i>
                             </form>
+                            <a href="{{ route('evento.show', $evento -> id) }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>ver</a>
                         </td>                            
-                        @endcan
-                        @can('listar-oferta')
-                        <td>
-                            <a href="{{ route('ofertaEgresado') }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>Acceder</a>
-                        </td>
-                        @endcan
+                        @endcan                        
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            {!! $ofertas -> links() !!}
+            {!! $eventos -> links() !!}
         </div>
     </div>
 </div>

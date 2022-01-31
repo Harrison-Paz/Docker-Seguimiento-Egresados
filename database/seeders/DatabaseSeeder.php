@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ReconocimientoSeeder::class);
         $this->call(EmpresaSeeder::class);
         $this->call(OfertaSeeder::class);
+        $this->call(EventoSeeder::class);
     }
 }
