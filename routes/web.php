@@ -9,6 +9,7 @@ use App\Http\Controllers\InvestigaController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\ReporteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,15 +33,17 @@ Route::view('/', 'dashboard')->middleware('auth'); // acceso solo para usuarios 
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout']);
 
+
+Route::get('secretaria/gestion-investigacion/grafico', [ReporteController::class, 'graficoInvestigacion'])->name('investiga.grafico');
+Route::get('secretaria/gestion-egresados/grafico',[ReporteController::class, 'graficoEgresado'])->name('egresado.grafico');
+
 //Rutas de dashboard
 //Rutas gestion egresados
 Route::resource('secretaria/gestion-egresados', EgresadoController::class)->names('egresado');
-Route::get('secretaria/gestion-egresados/grafico',[App\Http\Secretaria\EgresadoController::class, 'grafico'])->name('egresado.grafico');
 
 //rutas investigacion
 Route::resource('secretaria/gestion-investigacion', InvestigaController::class)->names('investigacion');
 
-Route::get('secretaria/gestion-investigacion/grafico', [InvestigaController::class, 'grafico'])->name('investiga.grafico');
 
 //rutas Empresas
 Route::resource('secretaria/gestion-empresa', EmpresaController::class)->names('empresa');

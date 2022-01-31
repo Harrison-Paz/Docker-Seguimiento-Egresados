@@ -4,9 +4,9 @@
 <!-- Hover table card start -->
 <div class="card">
     <div class="card-header">
-        <h5>Lista de capacitación</h5> 
+        <h5>Lista de capacitaciones</h5> 
         <a class="btn btn-outline-info" href="javascript:history.back()">Regresar</a>       
-        <span>Ofertas registradas</span>
+        <span>Detalle de capacitación</span>
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><i class="fa fa fa-wrench open-card-option"></i></li>

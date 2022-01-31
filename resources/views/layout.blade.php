@@ -387,7 +387,7 @@
                                             </a>
                                         </li>
                                         <li class=" ">
-                                            <a href="{{ route('oferta.create') }}" class="waves-effect waves-dark">
+                                            <a href="{{ route('evento.create') }}" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                                 <span class="pcoded-mtext">Nuevo</span>
                                                 <span class="pcoded-mcaret"></span>
@@ -476,6 +476,13 @@
                                             </a>
                                         </li>
                                     </ul>                                    
+                                </li>
+                                <li class="">
+                                    <a href="{{ route('evento.index') }}" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                                        <span class="pcoded-mtext">Eventos</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
                                 </li>
                                 <li class="">
                                     <a href="{{ url('mailto:tdsgunt@unitru.edu.pe') }}" class="waves-effect waves-dark">

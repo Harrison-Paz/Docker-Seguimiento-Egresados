@@ -4,12 +4,12 @@
 <!-- Hover table card start -->
 <div class="card">
     <div class="card-header">
-        <h5>Lista de capacitación</h5>
+        <h5>Lista de capacitaciones</h5>
         @can('listar-egresados')
         <a href="{{ route('evento.create') }}" class="btn btn-success btn-sm"><i
             class="fas fa-plus-square"></i>Agregar</a>            
         @endcan
-        <span>Ofertas registradas</span>
+        <span>Capacitaciones registradas</span>
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -30,9 +30,8 @@
                         <th>Organizacion</th>
                         <th>Inscripciones</th>
                         <th>Fecha</th>
-                        <th>Horas academicas</th>
                         <th>Dirección</th>
-                        <th>Acciones</th>
+                        <th colspan="3">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,26 +42,29 @@
                         <td>{{ $evento->organizacion }}</td>
                         <td>{{ $evento->fechaInscripcion }}</td>
                         <td>{{ $evento->fechaEvento }}</td>
-                        <td>{{ $evento->horasAcademicas }}</td>
                         <td>{{ $evento->direccion }}</td>
                         @can('listar-egresados')
                         <td>
                             <a href="{{ route('evento.edit', $evento -> id) }}"
                                 class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
+                        </td>   
+                        <td>
                             <form action="{{ route('evento.destroy', $evento -> id) }}" method="POST"
-                                style="float: left;">
+                                style="float: ;">
                                 @csrf
                                 {{-- TODO: pasamos datos por metodo Post, pero necesitamos 'delete' para el controlador,
                                 asi que lo convertimos
                                 ... --}}
                                 {{ method_field('DELETE') }}
                                 <button type="submit" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Quieres borrar?')" value="Borrar"><i class="fas fa-trash">
-                                        Borar</i></button> </i>
+                                onclick="return confirm('Quieres borrar?')" value="Borrar"><i class="fas fa-trash">
+                                    Borar</i></button> </i>
                             </form>
-                            <a href="{{ route('evento.show', $evento -> id) }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>ver</a>
-                        </td>                            
-                        @endcan                        
+                        </td>                         
+                        @endcan 
+                        <td>
+                            <a href="{{ route('evento.show', $evento -> id) }}" class="btn btn-success btn-sm float-right"><i class="fas fa-edit"></i>ver</a>
+                        </td>                       
                     </tr>
                     @endforeach
                 </tbody>

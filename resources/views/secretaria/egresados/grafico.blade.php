@@ -7,7 +7,7 @@
         <div class="float-right mr-5">
             <a class="btn btn-outline-primary" href="javascript:history.back()">Regresar</a>
         </div>
-        <span>Investigaciones por año</span>
+        <span>Nivel academico de los egresados</span>
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -37,7 +37,7 @@
                         <br>
                         <br>
                         <br>
-                        <h4 style="color: gray">Total de investigaciones: {{ $inv }}</h4>
+                        <h4 style="color: gray" >Total de egresados: {{ $egresados }}</h4>
                     </div>
                     <div class="col-7">
                         <canvas id="myChart" width="100px" height="100px"></canvas>
@@ -54,27 +54,23 @@
 <script>
     const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'polarArea',
         data: {
-        labels: ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022',],
+        labels: ['Bachiller', 'Titulados', 'Maestria', 'Doctorado'],
         datasets: [{
         label: '# investigaciones',
         data: <?= $data?>,
         backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgb(255, 99, 132)',
+        'rgb(75, 192, 192)',
+        'rgb(255, 205, 86)',
+        'rgb(201, 203, 207)',
         ],
         borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'rgb(255, 99, 132)',
+        'rgb(75, 192, 192)',
+        'rgb(255, 205, 86)',
+        'rgb(201, 203, 207)',
         ],
         borderWidth: 2
         }]
